@@ -1,0 +1,36 @@
+{
+    "name": "cfxlanguage",
+    "displayName": "ANSYS CFX Language",
+    "version": "0.1.0",
+    "publisher": "u2berggeist",
+    "description": "Language support for CFX Command Language and other similar synatxes",
+    "author": {
+        "name": "u2berggeist"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "activationEvents": [
+        "onLanguage:CFX"
+    ],
+    "engines": {
+        "vscode": "^0.10.0"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "CCL",
+                "aliases": ["CCL","CEL","CFX Command Language"],
+                "extensions": [".ccl",".cst"],
+            }
+        ],
+        "grammars": [
+            {
+                "language": "CCL",
+                "scopeName": "source.ccl",
+                "path": "./syntaxes/ccl.tmLanguage."
+            }
+        ]
+    }
+
+}
