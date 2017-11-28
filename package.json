@@ -28,7 +28,7 @@
             {
                 "language": "CCL",
                 "scopeName": "source.ccl",
-                "path": "./syntaxes/ccl.tmLanguage."
+                "path": "./syntaxes/ccl.tmLanguage"
             }
         ]
     }
