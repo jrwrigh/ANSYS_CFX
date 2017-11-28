@@ -20,8 +20,16 @@
         "languages": [
             {
                 "id": "CCL",
-                "aliases": ["CCL","CEL","CFX Command Language"],
-                "extensions": [".ccl",".cst"],
+                "aliases": [
+                    "CCL",
+                    "CEL",
+                    "CFX Command Language"
+                ],
+                "extensions": [
+                    ".ccl",
+                    ".cst"
+                ],
+                "configuration": "./language-configuration.json"
             }
         ],
         "grammars": [
