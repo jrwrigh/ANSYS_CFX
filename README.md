@@ -17,5 +17,6 @@ Here's a mock pull request change 2
 
 - Maybe Later Stuff:
     - https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers#_add-to-your-language-support-extension
+    - https://code.visualstudio.com/docs/extensions/testing-extensions
         
 
