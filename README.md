@@ -5,9 +5,17 @@ This is a extension made for VS Code meant to help with lanugauge highlighting a
 
 Here's a mock pull request change 2
 
-## ToDo
-- Grammar text stuff: 
+## Helpful Links
+- VS Code Language Extension Documentation:
+    - https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributeslanguages
+    - https://code.visualstudio.com/docs/extensionAPI/extension-points#_contributesgrammars
+    - https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers#_adding-a-new-language-colorizer
+
+- TextMate Grammar stuff: 
     - https://manual.macromates.com/en/language_grammars
     - https://www.sublimetext.com/docs/3/scope_naming.html
+
+- Maybe Later Stuff:
+    - https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers#_add-to-your-language-support-extension
         
 
