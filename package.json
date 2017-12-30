@@ -1,6 +1,6 @@
 {
     "name": "cfxlanguage",
-    "displayName": "ANSYS CFX Language",
+    "displayName": "ANSYS CFX Command Language (CCL)",
     "description": "Language Support for ANSYS CFX based scripts (CFX Command Language, CFX Expression Language, etc.). Applies for pre- and post-processing of CFX simulations.",
     "version": "0.1.0",
     "publisher": "tbd",
@@ -10,18 +10,26 @@
     "categories": [
         "Languages"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/u2berggeist/ANSYS_CFX_VSCode_Ext"
+    },
     "author": {
         "name": "u2berggeist"
     },
+    "activationEvents": [
+        "onLanguage:ccl"
+    ],
+    "main": ".",
     "contributes": {
         "languages": [{
-            "id": "CCL",
+            "id": "ccl",
             "aliases": ["CCL","CEL","CFX Command Language"],
             "extensions": [".ccl",".cst"],
             "configuration":"./language-configuration.json"
         }],
         "grammars": [{
-            "language": "CCL",
+            "language": "ccl",
             "scopeName": "source.ccl",
             "path": "./syntaxes/ccl.tmLanguage.json"
         }]
