@@ -15,6 +15,7 @@ This is a extension made for VS Code meant to help with lanugauge highlighting a
 - TextMate Grammar stuff: 
     - https://manual.macromates.com/en/language_grammars
     - https://www.sublimetext.com/docs/3/scope_naming.html
+    - http://www.apeth.com/nonblog/stories/textmatebundle.html
 
 - Maybe Later Stuff:
     - https://code.visualstudio.com/docs/extensions/themes-snippets-colorizers#_add-to-your-language-support-extension
