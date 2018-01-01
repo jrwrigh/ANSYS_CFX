@@ -1,5 +1,9 @@
 Here's a section of information for contributing to the extension. This is probably just going to be notes to myself.
 
+## TODO
+- [ ] Figure out the function.operator inside function.math issue
+- [ ] Set an Expressions theme to highlite alphanumerics (assumed to be user defined expressions)  
+
 
 ## Helpful Links
 - VS Code Language Extension Documentation:
