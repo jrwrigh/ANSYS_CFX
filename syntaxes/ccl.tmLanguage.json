@@ -29,22 +29,47 @@
 			"patterns": [
 				{
 					"name": "support.function.math.ccl",
-					"match": "[^A-Za-z0-9](abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)[^A-Za-z0-9]"
+					"match": "\\W(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)\\W"
 				}
 			]
 		},
 		"functions_operators": {
 			"patterns": [
 				{
-					"name": "support.function.operator.ccl",
-					"match": "\\b(area|area_x|area_y|area_z|areaAve|areaAve_x|areaAve_y|areaAve_z|areaInt|areaInt_x|areaInt_y|areaInt_z|ave|count|countTrue|force|forceNorm|force_x|force_y|force_z|inside|length|lengthAve|lengthInt|mass|massAve|masssFlow|massFlowAve|massFlowAveAbs|massFlowInt|massInt|maxVal|minVal|probe|rbstate|rmsAve|sum|torque|torque_x|torque_y|torque_z|volume|volumeAve|volumeInt|probe)\\("
+					"name": "meta",
+					"contentName": "variable.parameter",
+					"begin": "\\W(area|area_x|area_y|area_z|areaAve|areaAve_x|areaAve_y|areaAve_z|areaInt|areaInt_x|areaInt_y|areaInt_z|ave|count|countTrue|force|forceNorm|force_x|force_y|force_z|inside|length|lengthAve|lengthInt|mass|massAve|masssFlow|massFlowAve|massFlowAveAbs|massFlowInt|massInt|maxVal|minVal|probe|rbstate|rmsAve|sum|torque|torque_x|torque_y|torque_z|volume|volumeAve|volumeInt|probe)(\\()",
+					"end": "\\)@([\\w\\s]+)",
+					"comment": "begin captures the built-in function name, end captures the @location, and the contentName is the variable parameter of the function",
+					"beginCaptures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "support.function.operator.ccl",
+									"match": ".*",
+									"comment": "Captures the built-in function name"
+								}
+							]
+						}
+					},
+					"endCaptures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"constant.other",
+									"match": ".*",
+									"comment": "The location the function is evaluated at."
+								}
+							]
+						}
+					}
 				}
 			]
 		},
 		"physical_constants": {
 			"patterns": [
 				{
-					"name": "constant.other",
+					"name": "constant.other.ccl",
 					"match": "\\b(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)\\b"
 				}
 			]
@@ -68,7 +93,7 @@
 		"section_headings": {
 			"patterns": [
 				{
-					"name": "keyword.control",
+					"name": "keyword.control.ccl",
 					"match": "^\\s*[A-Z ]+\\:"
 				}
 			]
@@ -76,7 +101,7 @@
 		"option": {
 			"patterns": [
 				{
-					"name":"constant.language",
+					"name":"constant.language.ccl",
 					"match": "^\\s+Option"
 				}
 			]
