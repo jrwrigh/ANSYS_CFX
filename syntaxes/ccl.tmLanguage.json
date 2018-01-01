@@ -3,12 +3,6 @@
 	"name": "ANSYS CCL",
 	"patterns": [
 		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
 			"include": "#functions_math"
 		},
 		{
@@ -19,30 +13,11 @@
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [
-				{
-					"name": "keyword.control.ccl",
-					"match": "\\b(if|while|for|return)\\b"
-				}
-			]
-		},
-		"strings": {
-			"name": "string.quoted.double.ccl",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.ccl",
-					"match": "\\\\."
-				}
-			]
-		},
 		"functions_math": {
 			"patterns": [
 				{
 					"name": "support.function.math",
-					"match": "(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh|*|-|+|^)"
+					"match": "(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh|\\*|-|\\+|\\^)"
 				}
 			]
 		},
