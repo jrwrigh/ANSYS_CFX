@@ -17,10 +17,6 @@
     "author": {
         "name": "u2berggeist"
     },
-    "activationEvents": [
-        "onLanguage:ccl"
-    ],
-    "main": ".",
     "contributes": {
         "languages": [{
             "id": "ccl",
