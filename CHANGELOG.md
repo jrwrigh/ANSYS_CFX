@@ -1,5 +1,5 @@
 # Change Log
-All notable changes to the "ansys-ccl" extension will be documented in this file.
+All notable changes to the "ANSYS CFX Command Lanugauge (CCL)" extension will be documented in this file.
 
 Format here based on [Keep a Changelog](http://keepachangelog.com/).
 
