@@ -3,6 +3,9 @@
 	"name": "ANSYS CCL",
 	"patterns": [
 		{
+			"include": "#comment"
+		},
+		{
 			"include": "#functions_math"
 		},
 		{
@@ -10,21 +13,30 @@
 		},
 		{
 			"include": "#physical_constants"
+		},
+		{
+			"include": "#units"
+		},
+		{
+			"include": "#section_headings"
+		},
+		{
+			"include": "#option"
 		}
 	],
 	"repository": {
 		"functions_math": {
 			"patterns": [
 				{
-					"name": "support.function.math",
-					"match": "(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh|\\*|-|\\+|\\^)"
+					"name": "support.function.math.ccl",
+					"match": "[^A-Za-z0-9](abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)[^A-Za-z0-9]"
 				}
 			]
 		},
 		"functions_operators": {
 			"patterns": [
 				{
-					"name": "support.function.operator",
+					"name": "support.function.operator.ccl",
 					"match": "\\b(area|area_x|area_y|area_z|areaAve|areaAve_x|areaAve_y|areaAve_z|areaInt|areaInt_x|areaInt_y|areaInt_z|ave|count|countTrue|force|forceNorm|force_x|force_y|force_z|inside|length|lengthAve|lengthInt|mass|massAve|masssFlow|massFlowAve|massFlowAveAbs|massFlowInt|massInt|maxVal|minVal|probe|rbstate|rmsAve|sum|torque|torque_x|torque_y|torque_z|volume|volumeAve|volumeInt|probe)\\("
 				}
 			]
@@ -32,8 +44,40 @@
 		"physical_constants": {
 			"patterns": [
 				{
-					"name": "support.constant",
+					"name": "constant.other",
 					"match": "\\b(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)\\b"
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.ccl",
+					"match": "^\\#.*"
+				}
+			]
+		},
+		"units": {
+			"patterns": [
+				{
+					"name": "keyword.other.unit.ccl",
+					"match": "\\[.+?\\]"
+				}
+			]
+		},
+		"section_headings": {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "^\\s*[A-Z ]+\\:"
+				}
+			]
+		},
+		"option": {
+			"patterns": [
+				{
+					"name":"constant.language",
+					"match": "^\\s+Option"
 				}
 			]
 		}
