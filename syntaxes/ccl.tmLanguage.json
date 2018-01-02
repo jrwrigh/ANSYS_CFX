@@ -113,8 +113,18 @@
 		"section_headings": {
 			"patterns": [
 				{
-					"name": "keyword.control.ccl",
-					"match": "^\\s*[A-Z ]+\\:"
+					"name": "meta",
+					"match": "^\\s*([A-Z ]+)\\:",
+					"captures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "entity.name.class.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
