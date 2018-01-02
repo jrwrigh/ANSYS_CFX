@@ -3,6 +3,9 @@
 This is a extension meant to help with syntax highlighting and code folding for script lanugages involving ANSYS CFX workflows. CFX is a Computational Fluid Dynamics (CFD) software package within the Computer Aided Engineering (CAE) package ANSYS. This extensions is specifically designed to be used with .ccl and .cst files which are the pre- and post-processing scripts within the program.
 
 
+## Known Issues
+- Numbering and expressions within the Flow section are not working
+
 ## Features
 
 - Syntax highliting
