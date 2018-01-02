@@ -2,27 +2,14 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "ANSYS CCL",
 	"patterns": [
-		{
-			"include": "#comment"
-		},
-		{
-			"include": "#functions_math"
-		},
-		{
-			"include": "#functions_operators"
-		},
-		{
-			"include": "#physical_constants"
-		},
-		{
-			"include": "#units"
-		},
-		{
-			"include": "#section_headings"
-		},
-		{
-			"include": "#option"
-		}
+		{"include": "#flow"},
+		{"include": "#comment"},
+		{"include": "#functions_math"},
+		{"include": "#functions_operators"},
+		{"include": "#physical_constants"},
+		{"include": "#units"},
+		{"include": "#section_headings"},
+		{"include": "#option"}
 	],
 	"repository": {
 		"functions_math": {
@@ -85,7 +72,7 @@
 						"1": {
 							"patterns": [
 								{
-									"name":"constant.other.ccl",
+									"name":"constant.language.ccl",
 									"match": ".*"
 								}
 							]
@@ -105,21 +92,13 @@
 		"units": {
 			"patterns": [
 				{
-					"name": "keyword.other.unit.ccl",
-					"match": "\\[.+?\\]"
-				}
-			]
-		},
-		"section_headings": {
-			"patterns": [
-				{
-					"name": "meta",
-					"match": "^\\s*([A-Z ]+)\\:",
+					"name": "meta.unit.ccl",
+					"match": "(\\[.+?\\])",
 					"captures": {
 						"1":{
 							"patterns": [
-								{
-									"name": "entity.name.class.ccl",
+								{ 
+									"name":"keyword.other.unit.ccl",
 									"match": ".*"
 								}
 							]
@@ -128,11 +107,108 @@
 				}
 			]
 		},
-		"option": {
+		"section_headings": {
 			"patterns": [
 				{
-					"name":"constant.language.ccl",
-					"match": "^\\s+Option"
+					"name": "meta",
+					"match": "^\\s*([A-Z ]+)\\:( [\\w ]*)?",
+					"captures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "entity.name.class.ccl",
+									"match": ".*"
+								}
+							]
+						},
+						"2": {
+							"patterns": [
+								{
+									"name": "constant.other",
+									"match": "[\\w ]+"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"options": {
+			"patterns": [
+				{
+					"name":"meta.options.ccl",
+					"match": "^\\s*([\\w ]+) =(.*)$",
+					"captures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "storage.type.ccl",
+									"match": ".*"
+								}
+							]
+						},
+						"2":{
+							"patterns": [
+								{
+									"name":"meta",
+									"match": "\\A [^A-Za-z].*",
+									"captures": {
+										"0": {
+											"patterns": [
+												{"include": "#units"},
+												{"include": "#numbers"}
+											]
+										}
+									}
+								},
+								{"include": "#units"},
+								{
+									"name": "storage.modifier.ccl",
+									"match": "[\\w ]",
+									"comment": "Capture everything except the comma seperator "
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"flow": {
+			"patterns": [
+				{
+					"name": "meta.section.ccl",
+					"begin": "^FLOW\\:",
+					"end": "^END",
+					"beginCaptures": {
+						"0":{
+							"patterns": [
+								{"include": "#section_headings"}
+							]
+						}
+					},
+					"patterns": [
+						{"include": "#section_headings"},
+						{"include": "#options"},
+						{"include": "#units"}
+					]
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "meta.ccl",
+					"match": "([\\d\\.]+)",
+					"captures": { 
+						"1": {
+							"patterns": [
+								{
+									"name": "constant.numeric.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		}
