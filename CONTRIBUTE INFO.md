@@ -5,6 +5,7 @@ Here's a section of information for contributing to the extension. This is proba
 - [ ] Set an Expressions theme to highlite alphanumerics (assumed to be user defined expressions)  
 - [ ] Add numeric section (check to see if there are math operators, then highlite numbers)
 - [ ] Look up "citern" and add similar constants to a new selection. Probably keep with constants
+- [ ] Make Selections of the options be able to cross lines
 
 
 ## Helpful Links
