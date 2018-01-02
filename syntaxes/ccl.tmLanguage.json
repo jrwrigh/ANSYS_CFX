@@ -28,8 +28,18 @@
 		"functions_math": {
 			"patterns": [
 				{
-					"name": "support.function.math.ccl",
-					"match": "\\W(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)\\W"
+					"name": "meta",
+					"match": "\\W(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)(\\()",
+					"captures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"support.function.math.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
@@ -70,7 +80,7 @@
 			"patterns": [
 				{
 					"name": "meta",
-					"match": "\\W(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)(\\()",
+					"match": "\\W(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)\\W",
 					"captures": {
 						"1": {
 							"patterns": [
