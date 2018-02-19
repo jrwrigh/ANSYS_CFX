@@ -7,7 +7,6 @@ Here's a section of information for contributing to the extension. This is proba
 - [ ] Look up "citern" and add similar constants to a new selection. Probably keep with constants
 - [ ] Make Selections of the options be able to cross lines
 - [ ] Make expressions in Flow section be correct
-Test
 
 
 ## Helpful Links
