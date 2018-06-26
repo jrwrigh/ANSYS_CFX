@@ -29,7 +29,7 @@
 			"patterns": [
 				{
 					"name": "support.function.math.ccl",
-					"match": "[^A-Za-z0-9](abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)[^A-Za-z0-9]"
+					"match": "[^A-Za-z0-9](abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh|=)[^A-Za-z0-9]"
 				}
 			]
 		},
