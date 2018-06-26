@@ -8,11 +8,11 @@
         "vscode": "^0.19.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/u2berggeist/ANSYS_CFX_VSCode_Ext"
+        "url": "https://github.com/u2berggeist/ANSYS_CFX"
     },
     "author": {
         "name": "u2berggeist"
