@@ -4,12 +4,12 @@
 	"patterns": [
 		{"include": "#flow"},
 		{"include": "#comment"},
+		{"include": "#options"},
 		{"include": "#functions_math"},
 		{"include": "#functions_operators"},
 		{"include": "#physical_constants"},
 		{"include": "#units"},
-		{"include": "#section_headings"},
-		{"include": "#option"}
+		{"include": "#section_headings"}
 	],
 	"repository": {
 		"functions_math": {
@@ -149,6 +149,7 @@
 						},
 						"2":{
 							"patterns": [
+								{"include": "#functions_operators"},
 								{
 									"name":"meta",
 									"match": "\\A [^A-Za-z].*",
@@ -165,7 +166,7 @@
 								{
 									"name": "storage.modifier.ccl",
 									"match": "[\\w ]",
-									"comment": "Capture everything except the comma seperator "
+									"comment": "Capture everything except the comma separator "
 								}
 							]
 						}
