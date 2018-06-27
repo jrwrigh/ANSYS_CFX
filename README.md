@@ -15,6 +15,8 @@
 
 ## Please report bugs or feature requests on [GitHub](https://www.github.com/u2berggeist/ANSYS_CFX).
 
+## Want to Contribute? Go [here](https://github.com/u2berggeist/ANSYS_CFX/blob/master/CONTRIBUTE%20INFO.md) to find some helpful resources!
+
 
 
 
