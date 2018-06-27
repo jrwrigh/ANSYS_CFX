@@ -2,7 +2,7 @@
     "name": "cfxlanguage",
     "displayName": "ANSYS CFX Command Language (CCL)",
     "description": "Language Support for ANSYS CFX based scripts (CFX Command Language, CFX Expression Language, etc.). Applies for pre- and post-processing of CFX simulations.",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "publisher": "u2berggeist",
     "engines": {
         "vscode": "^0.19.0"
