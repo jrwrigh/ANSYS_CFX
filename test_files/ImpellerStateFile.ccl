@@ -1,0 +1,843 @@
+# State file created:  2017/03/21 13:17:37
+# Build 16.2 2015.06.30-00.06-134402
+
+LIBRARY:
+  CEL:
+    EXPRESSIONS:
+      Avg ptout 15 = probe(Expression Value.Arithmetic Average)@MP ptout 15
+      Avg ptout 40 = probe(Expression Value.Arithmetic Average)@MP ptout 40
+      D2 = .088 [m]
+      Dt = 1 / abs(Omega1)
+      Omega1 = 2. * pi * RPS
+      RPM = RPS*60
+      RPS = (1 [rev] * U2) / (pi * D2)
+      Std Dev ptout 15 = probe(Expression Value.Standard Deviation)@MP ptout 15
+      U2 = 280 [m s^-1]
+      ecmassfl = massfl * sqrt(ttout/298 [K])/(ptout/1 [bar])
+      massfl = 0.0285081[kg s^-1]
+      ptout = massFlowAve(Total Pressure)@Outlet + 1 [bar]
+      ttout = massFlowAve(Total Temperature)@Outlet
+      wallroughness = 50 [micron]
+    END
+  END
+END
+FLOW: Flow Analysis 1
+  SOLUTION UNITS:
+    Angle Units = [rad]
+    Length Units = [m]
+    Mass Units = [kg]
+    Solid Angle Units = [sr]
+    Temperature Units = [K]
+    Time Units = [s]
+  END
+  ANALYSIS TYPE:
+    Option = Steady State
+    EXTERNAL SOLVER COUPLING:
+      Option = None
+    END
+  END
+  DOMAIN: Impeller
+    Coord Frame = Coord 0
+    Domain Type = Fluid
+    Location = Entire Passage
+    BOUNDARY: ImpHub
+      Boundary Type = WALL
+      Frame Type = Rotating
+      Location = Entire Passage HUB
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: ImpHubStat
+      Boundary Type = WALL
+      Frame Type = Rotating
+      Location = Entire OUTBlock HUB
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+          WALL VELOCITY:
+            Option = Counter Rotating Wall
+          END
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: ImpInlet Side 1
+      Boundary Type = INTERFACE
+      Location = Entire Passage INFLOW
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: ImpMain
+      Boundary Type = WALL
+      Frame Type = Rotating
+      Location = Entire MainBlade
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: ImpShrd
+      Boundary Type = WALL
+      Frame Type = Rotating
+      Location = Entire Passage SHROUD,Entire OUTBlock SHROUD
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+          WALL VELOCITY:
+            Option = Counter Rotating Wall
+          END
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: ImpSpl
+      Boundary Type = WALL
+      Frame Type = Rotating
+      Location = Entire SplitterBlade
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: ImpVol Side 1
+      Boundary Type = INTERFACE
+      Location = Entire OUTBlock OUTFLOW
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: Impeller Default
+      Boundary Type = WALL
+      Frame Type = Rotating
+      Location = HUB DOWNSTREAM Passage,HUB DOWNSTREAM Passage 2,HUB \
+        DOWNSTREAM Passage 3,HUB DOWNSTREAM Passage 4,HUB DOWNSTREAM Passage \
+        5,HUB DOWNSTREAM Passage 6,SHROUD DOWNSTREAM Passage,SHROUD \
+        DOWNSTREAM Passage 2,SHROUD DOWNSTREAM Passage 3,SHROUD DOWNSTREAM \
+        Passage 4,SHROUD DOWNSTREAM Passage 5,SHROUD DOWNSTREAM Passage 6
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: TipMain Side 1
+      Boundary Type = INTERFACE
+      Location = Entire MainBlade SHROUD TIP GGI SIDE 1
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: TipMain Side 2
+      Boundary Type = INTERFACE
+      Location = Entire MainBlade SHROUD TIP GGI SIDE 2
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: TipSpl Side 1
+      Boundary Type = INTERFACE
+      Location = Entire SplitterBlade SHROUD TIP GGI SIDE 1
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: TipSpl Side 2
+      Boundary Type = INTERFACE
+      Location = Entire SplitterBlade SHROUD TIP GGI SIDE 2
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    DOMAIN MODELS:
+      BUOYANCY MODEL:
+        Option = Non Buoyant
+      END
+      DOMAIN MOTION:
+        Angular Velocity = RPS
+        Option = Rotating
+        AXIS DEFINITION:
+          Option = Coordinate Axis
+          Rotation Axis = Coord 0.3
+        END
+      END
+      MESH DEFORMATION:
+        Option = None
+      END
+      REFERENCE PRESSURE:
+        Reference Pressure = 1 [bar]
+      END
+    END
+    FLUID DEFINITION: Fluid 1
+      Material = Air Ideal Gas
+      Option = Material Library
+      MORPHOLOGY:
+        Option = Continuous Fluid
+      END
+    END
+    FLUID MODELS:
+      COMBUSTION MODEL:
+        Option = None
+      END
+      HEAT TRANSFER MODEL:
+        Include Viscous Work Term = True
+        Option = Total Energy
+      END
+      THERMAL RADIATION MODEL:
+        Option = None
+      END
+      TURBULENCE MODEL:
+        Option = SST
+        CURVATURE CORRECTION:
+          Curvature Correction Coefficient = 1.0
+          Option = Production Correction
+        END
+        REATTACHMENT MODIFICATION:
+          Option = Reattachment Production
+        END
+      END
+      TURBULENT WALL FUNCTIONS:
+        High Speed Model = Off
+        Option = Automatic
+      END
+    END
+  END
+  DOMAIN: Inlet Domain
+    Coord Frame = Coord 0
+    Domain Type = Fluid
+    Location = inlet dom,inletext dom
+    BOUNDARY: ImpInlet Side 2
+      Boundary Type = INTERFACE
+      Location = inlet impeller
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: Inlet
+      Boundary Type = INLET
+      Location = Inlet
+      BOUNDARY CONDITIONS:
+        FLOW DIRECTION:
+          Option = Normal to Boundary Condition
+        END
+        FLOW REGIME:
+          Option = Subsonic
+        END
+        HEAT TRANSFER:
+          Option = Total Temperature
+          Total Temperature = 298 [K]
+        END
+        MASS AND MOMENTUM:
+          Option = Total Pressure
+          Relative Pressure = 0 [bar]
+        END
+        TURBULENCE:
+          Option = High Intensity and Eddy Viscosity Ratio
+        END
+      END
+    END
+    BOUNDARY: InletDomainInt Side 1
+      Boundary Type = INTERFACE
+      Location = inlet inletext
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: InletDomainInt Side 2
+      Boundary Type = INTERFACE
+      Location = inletext inlet
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: inletrot
+      Boundary Type = WALL
+      Location = inlet nose
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+          WALL VELOCITY:
+            Angular Velocity = RPS
+            Option = Rotating Wall
+            AXIS DEFINITION:
+              Option = Coordinate Axis
+              Rotation Axis = Coord 0.3
+            END
+          END
+        END
+        WALL ROUGHNESS:
+          Option = Smooth Wall
+        END
+      END
+    END
+    BOUNDARY: inletwall
+      Boundary Type = WALL
+      Location = inlet walls,inletext walls
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Rough Wall
+          Sand Grain Roughness Height = wallroughness
+        END
+      END
+    END
+    DOMAIN MODELS:
+      BUOYANCY MODEL:
+        Option = Non Buoyant
+      END
+      DOMAIN MOTION:
+        Option = Stationary
+      END
+      MESH DEFORMATION:
+        Option = None
+      END
+      REFERENCE PRESSURE:
+        Reference Pressure = 1 [bar]
+      END
+    END
+    FLUID DEFINITION: Fluid 1
+      Material = Air Ideal Gas
+      Option = Material Library
+      MORPHOLOGY:
+        Option = Continuous Fluid
+      END
+    END
+    FLUID MODELS:
+      COMBUSTION MODEL:
+        Option = None
+      END
+      HEAT TRANSFER MODEL:
+        Include Viscous Work Term = True
+        Option = Total Energy
+      END
+      THERMAL RADIATION MODEL:
+        Option = None
+      END
+      TURBULENCE MODEL:
+        Option = SST
+        CURVATURE CORRECTION:
+          Curvature Correction Coefficient = 1.0
+          Option = Production Correction
+        END
+        REATTACHMENT MODIFICATION:
+          Option = Reattachment Production
+        END
+      END
+      TURBULENT WALL FUNCTIONS:
+        High Speed Model = Off
+        Option = Automatic
+      END
+    END
+  END
+  DOMAIN: Volute
+    Coord Frame = Coord 0
+    Domain Type = Fluid
+    Location = vol dom,volext dom
+    BOUNDARY: ImpVol Side 2
+      Boundary Type = INTERFACE
+      Location = vol impeller
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: Outlet
+      Boundary Type = OUTLET
+      Location = Outlet
+      BOUNDARY CONDITIONS:
+        FLOW REGIME:
+          Option = Subsonic
+        END
+        MASS AND MOMENTUM:
+          Corrected Mass Flow Rate = ecmassfl
+          Mass Flow Rate Area = As Specified
+          Option = Corrected Mass Flow Rate
+          Reference Pressure = 1 [atm]
+          Reference Temperature = 288.15 [K]
+        END
+      END
+    END
+    BOUNDARY: VoluteDomainInt Side 1
+      Boundary Type = INTERFACE
+      Location = vol volext
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: VoluteDomainInt Side 2
+      Boundary Type = INTERFACE
+      Location = volext vol
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Conservative Interface Flux
+        END
+        MASS AND MOMENTUM:
+          Option = Conservative Interface Flux
+        END
+        TURBULENCE:
+          Option = Conservative Interface Flux
+        END
+      END
+    END
+    BOUNDARY: volwall
+      Boundary Type = WALL
+      Location = volext walls,vol inf
+      BOUNDARY CONDITIONS:
+        HEAT TRANSFER:
+          Option = Adiabatic
+        END
+        MASS AND MOMENTUM:
+          Option = No Slip Wall
+        END
+        WALL ROUGHNESS:
+          Option = Rough Wall
+          Sand Grain Roughness Height = wallroughness
+        END
+      END
+    END
+    DOMAIN MODELS:
+      BUOYANCY MODEL:
+        Option = Non Buoyant
+      END
+      DOMAIN MOTION:
+        Option = Stationary
+      END
+      MESH DEFORMATION:
+        Option = None
+      END
+      REFERENCE PRESSURE:
+        Reference Pressure = 1 [bar]
+      END
+    END
+    FLUID DEFINITION: Fluid 1
+      Material = Air Ideal Gas
+      Option = Material Library
+      MORPHOLOGY:
+        Option = Continuous Fluid
+      END
+    END
+    FLUID MODELS:
+      COMBUSTION MODEL:
+        Option = None
+      END
+      HEAT TRANSFER MODEL:
+        Include Viscous Work Term = True
+        Option = Total Energy
+      END
+      THERMAL RADIATION MODEL:
+        Option = None
+      END
+      TURBULENCE MODEL:
+        Option = SST
+        CURVATURE CORRECTION:
+          Curvature Correction Coefficient = 1.0
+          Option = Production Correction
+        END
+        REATTACHMENT MODIFICATION:
+          Option = Reattachment Production
+        END
+      END
+      TURBULENT WALL FUNCTIONS:
+        High Speed Model = Off
+        Option = Automatic
+      END
+    END
+  END
+  DOMAIN INTERFACE: ImpInlet
+    Boundary List1 = ImpInlet Side 1
+    Boundary List2 = ImpInlet Side 2
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS:
+      Option = General Connection
+      FRAME CHANGE:
+        Option = Frozen Rotor
+      END
+      MASS AND MOMENTUM:
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL:
+          Option = None
+        END
+      END
+      PITCH CHANGE:
+        Option = Specified Pitch Angles
+        Pitch Angle Side1 = 360 [degree]
+        Pitch Angle Side2 = 360 [degree]
+      END
+    END
+    MESH CONNECTION:
+      Option = GGI
+    END
+  END
+  DOMAIN INTERFACE: ImpVol
+    Boundary List1 = ImpVol Side 1
+    Boundary List2 = ImpVol Side 2
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS:
+      Option = General Connection
+      FRAME CHANGE:
+        Option = Frozen Rotor
+      END
+      MASS AND MOMENTUM:
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL:
+          Option = None
+        END
+      END
+      PITCH CHANGE:
+        Option = Specified Pitch Angles
+        Pitch Angle Side1 = 360 [degree]
+        Pitch Angle Side2 = 360 [degree]
+      END
+    END
+    MESH CONNECTION:
+      Option = GGI
+    END
+  END
+  DOMAIN INTERFACE: InletDomainInt
+    Boundary List1 = InletDomainInt Side 1
+    Boundary List2 = InletDomainInt Side 2
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS:
+      Option = General Connection
+      FRAME CHANGE:
+        Option = None
+      END
+      MASS AND MOMENTUM:
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL:
+          Option = None
+        END
+      END
+      PITCH CHANGE:
+        Option = None
+      END
+    END
+    MESH CONNECTION:
+      Option = Automatic
+    END
+  END
+  DOMAIN INTERFACE: TipMain
+    Boundary List1 = TipMain Side 1
+    Boundary List2 = TipMain Side 2
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS:
+      Option = General Connection
+      FRAME CHANGE:
+        Option = None
+      END
+      MASS AND MOMENTUM:
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL:
+          Option = None
+        END
+      END
+      PITCH CHANGE:
+        Option = None
+      END
+    END
+    MESH CONNECTION:
+      Option = Automatic
+    END
+  END
+  DOMAIN INTERFACE: TipSpl
+    Boundary List1 = TipSpl Side 1
+    Boundary List2 = TipSpl Side 2
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS:
+      Option = General Connection
+      FRAME CHANGE:
+        Option = None
+      END
+      MASS AND MOMENTUM:
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL:
+          Option = None
+        END
+      END
+      PITCH CHANGE:
+        Option = None
+      END
+    END
+    MESH CONNECTION:
+      Option = GGI
+    END
+  END
+  DOMAIN INTERFACE: VoluteDomainInt
+    Boundary List1 = VoluteDomainInt Side 1
+    Boundary List2 = VoluteDomainInt Side 2
+    Interface Type = Fluid Fluid
+    INTERFACE MODELS:
+      Option = General Connection
+      FRAME CHANGE:
+        Option = None
+      END
+      MASS AND MOMENTUM:
+        Option = Conservative Interface Flux
+        MOMENTUM INTERFACE MODEL:
+          Option = None
+        END
+      END
+      PITCH CHANGE:
+        Option = None
+      END
+    END
+    MESH CONNECTION:
+      Option = Automatic
+    END
+  END
+  OUTPUT CONTROL:
+    MONITOR OBJECTS:
+      EFFICIENCY OUTPUT:
+        Efficiency Calculation Method = Total to Total
+        Efficiency Type = Both Compression and Expansion
+        Inflow Boundary = Inlet
+        Option = Output To Solver Monitor
+        Outflow Boundary = Outlet
+      END
+      MONITOR BALANCES:
+        Option = Full
+      END
+      MONITOR FORCES:
+        Option = Full
+      END
+      MONITOR PARTICLES:
+        Option = Full
+      END
+      MONITOR POINT: Interrupt Control 2
+        Coord Frame = Coord 0
+        Expression Value = abs(ptout - Avg ptout 40)/Avg ptout 40
+        Option = Expression
+      END
+      MONITOR POINT: MP ptout 15
+        Coord Frame = Coord 0
+        Expression Value = ptout -1[bar]
+        Option = Expression
+        MONITOR STATISTICS:
+          Option = Moving Interval
+          Statistics List = Arithmetic Average,Standard Deviation
+          INTERVAL DEFINITION:
+            Number of Iterations = 15
+            Option = Iterations
+          END
+        END
+      END
+      MONITOR POINT: MP ptout 40
+        Coord Frame = Coord 0
+        Expression Value = ptout - 1 [bar]
+        Option = Expression
+        MONITOR STATISTICS:
+          Option = Moving Interval
+          Statistics List = Arithmetic Average
+          INTERVAL DEFINITION:
+            Number of Iterations = 40
+            Option = Iterations
+          END
+        END
+      END
+      MONITOR POINT: ecm
+        Coord Frame = Coord 0
+        Expression Value = ecmassfl
+        Option = Expression
+      END
+      MONITOR POINT: massin
+        Coord Frame = Coord 0
+        Expression Value = abs(massFlow()@Inlet)
+        Option = Expression
+      END
+      MONITOR POINT: massout
+        Coord Frame = Coord 0
+        Expression Value = abs(massFlow()@Outlet)
+        Option = Expression
+      END
+      MONITOR POINT: ptout
+        Coord Frame = Coord 0
+        Expression Value = areaAve(Total Pressure)@Outlet
+        Option = Expression
+      END
+      MONITOR POINT: ttout
+        Coord Frame = Coord 0
+        Expression Value = areaAve(Total Temperature)@Outlet
+        Option = Expression
+      END
+      MONITOR RESIDUALS:
+        Option = Full
+      END
+      MONITOR TOTALS:
+        Option = Full
+      END
+    END
+    RESULTS:
+      File Compression Level = Default
+      Option = Standard
+    END
+  END
+  SOLVER CONTROL:
+    Turbulence Numerics = High Resolution
+    ADVECTION SCHEME:
+      Option = High Resolution
+    END
+    CONVERGENCE CONTROL:
+      Length Scale Option = Conservative
+      Maximum Number of Iterations = 100
+      Minimum Number of Iterations = 1
+      Timescale Control = Auto Timescale
+      Timescale Factor = 1.0
+    END
+    CONVERGENCE CRITERIA:
+      Residual Target = 0.000001
+      Residual Type = RMS
+    END
+    DYNAMIC MODEL CONTROL:
+      Global Dynamic Model Control = On
+    END
+    INTERRUPT CONTROL:
+      INTERRUPT CONDITION: Interrupt Condition 1
+        Logical Expression = citern > 10 && Avg ptout 15 !=0 [bar] && abs(Std \
+          Dev ptout 15 /(Avg ptout 15 + 0.000001 [bar] ))<.0015
+        Option = Logical Expression
+      END
+      INTERRUPT CONDITION: Interrupt Condition 2
+        Logical Expression = citern>150 && abs(ptout - 1[bar] - Avg ptout \
+          40)/Avg ptout 40 <.0035
+        Option = Logical Expression
+      END
+    END
+  END
+END
+COMMAND FILE:
+  Version = 16.2
+END
