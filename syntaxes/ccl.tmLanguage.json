@@ -2,50 +2,108 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "ANSYS CCL",
 	"patterns": [
-		{
-			"include": "#comment"
-		},
-		{
-			"include": "#functions_math"
-		},
-		{
-			"include": "#functions_operators"
-		},
-		{
-			"include": "#physical_constants"
-		},
-		{
-			"include": "#units"
-		},
-		{
-			"include": "#section_headings"
-		},
-		{
-			"include": "#option"
-		}
+		{"include": "#flow"},
+		{"include": "#comment"},
+		{"include": "#options"},
+		{"include": "#functions_math"},
+		{"include": "#functions_operators"},
+		{"include": "#physical_constants"},
+		{"include": "#units"},
+		{"include": "#section_headings"}
 	],
 	"repository": {
 		"functions_math": {
 			"patterns": [
 				{
-					"name": "support.function.math.ccl",
-					"match": "[^A-Za-z0-9](abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh|=)[^A-Za-z0-9]"
+					"name": "meta",
+					"match": "\\W(abs|sin|cos|asin|acos|tan|atan|if|atans2|besselJ|besselY|cosh|exp|int|loge|log10|min|max|mod|nint|sinh|sqrt|step|tanh)(\\()",
+					"captures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"support.function.math.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
 		"functions_operators": {
 			"patterns": [
 				{
-					"name": "support.function.operator.ccl",
-					"match": "\\b(area|area_x|area_y|area_z|areaAve|areaAve_x|areaAve_y|areaAve_z|areaInt|areaInt_x|areaInt_y|areaInt_z|ave|count|countTrue|force|forceNorm|force_x|force_y|force_z|inside|length|lengthAve|lengthInt|mass|massAve|masssFlow|massFlowAve|massFlowAveAbs|massFlowInt|massInt|maxVal|minVal|probe|rbstate|rmsAve|sum|torque|torque_x|torque_y|torque_z|volume|volumeAve|volumeInt|probe)\\("
+					"name": "meta",
+					"contentName": "variable.parameter",
+					"begin": "\\W(area|area_x|area_y|area_z|areaAve|areaAve_x|areaAve_y|areaAve_z|areaInt|areaInt_x|areaInt_y|areaInt_z|ave|count|countTrue|force|forceNorm|force_x|force_y|force_z|inside|length|lengthAve|lengthInt|mass|massAve|massFlow|massFlowAve|massFlowAveAbs|massFlowInt|massInt|maxVal|minVal|probe|rbstate|rmsAve|sum|torque|torque_x|torque_y|torque_z|volume|volumeAve|volumeInt|probe)(\\()",
+					"end": "\\)@([\\w\\s]+)",
+					"comment": "begin captures the built-in function name, end captures the @location, and the contentName is the variable parameter of the function",
+					"beginCaptures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "support.function.operator.ccl",
+									"match": ".*",
+									"comment": "Captures the built-in function name"
+								}
+							]
+						}
+					},
+					"endCaptures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"constant.other",
+									"match": ".*",
+									"comment": "The location the function is evaluated at."
+								}
+							]
+						}
+					}
 				}
+			]
+		},
+		"functions_all": {
+			"patterns": [
+				{"include": "#functions_operators"},
+				{"include": "#functions_math"},
+				{"include": "#physical_constants"},
+				{"include": "#program_constants"}
 			]
 		},
 		"physical_constants": {
 			"patterns": [
 				{
-					"name": "constant.other",
-					"match": "\\b(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)\\b"
+					"name": "meta",
+					"match": "\\W(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)\\W",
+					"captures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"constant.language.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"program_constants": {
+			"patterns": [
+				{
+					"name": "meta",
+					"match": "\\W(citern|acplgstep|aitern|atstep|cstagger|ctstep|sstep|dtstep|t)\\W",
+					"captures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"constant.language.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
@@ -60,24 +118,147 @@
 		"units": {
 			"patterns": [
 				{
-					"name": "keyword.other.unit.ccl",
-					"match": "\\[.+?\\]"
+					"name": "meta.unit.ccl",
+					"match": "(\\[.+?\\])",
+					"captures": {
+						"1":{
+							"patterns": [
+								{ 
+									"name":"keyword.other.unit.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
 		"section_headings": {
 			"patterns": [
 				{
-					"name": "keyword.control",
-					"match": "^\\s*[A-Z ]+\\:"
+					"name": "meta",
+					"match": "^\\s*([A-Z ]+)\\:( [\\w ]*)?",
+					"captures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "entity.name.class.ccl",
+									"match": ".*"
+								}
+							]
+						},
+						"2": {
+							"patterns": [
+								{
+									"name": "constant.other",
+									"match": "[\\w ]+"
+								}
+							]
+						}
+					}
 				}
 			]
 		},
-		"option": {
+		"expressions":{
+			"patterns": [
+				{"include": "#functions_all"},
+				{
+					"name":"meta",
+					"match": "\\A [^A-Za-z].*",
+					"captures": {
+						"0": {
+							"patterns": [
+								{"include": "#units"},
+								{"include": "#numbers"}
+							]
+						}
+					}
+				},
+				{"include": "#units"},
+				{
+					"name": "storage.modifier.ccl",
+					"match": "[\\w ]",
+					"comment": "Capture everything except the comma separator "
+				}
+			]
+		},
+		"options": {
 			"patterns": [
 				{
-					"name":"constant.language",
-					"match": "^\\s+Option"
+					"name":"meta.options.ccl",
+					"match": "^\\s*([\\w ]+) =(.*)$",
+					"captures": {
+						"1":{
+							"patterns": [
+								{
+									"name": "storage.type.ccl",
+									"match": ".*"
+								}
+							]
+						},
+						"2":{
+							"patterns": [
+								{"include": "#functions_all"},
+								{
+									"name":"meta",
+									"match": "\\A [^A-Za-z].*",
+									"captures": {
+										"0": {
+											"patterns": [
+												{"include": "#units"},
+												{"include": "#numbers"}
+											]
+										}
+									}
+								},
+								{"include": "#units"},
+								{
+									"name": "storage.modifier.ccl",
+									"match": "[\\w ]",
+									"comment": "Capture everything except the comma separator "
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"flow": {
+			"patterns": [
+				{
+					"name": "meta.section.ccl",
+					"begin": "^FLOW\\:",
+					"end": "^END",
+					"beginCaptures": {
+						"0":{
+							"patterns": [
+								{"include": "#section_headings"}
+							]
+						}
+					},
+					"patterns": [
+						{"include": "#section_headings"},
+						{"include": "#options"},
+						{"include": "#expressions"}
+					]
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "meta.ccl",
+					"match": "([\\d\\.]+)",
+					"captures": { 
+						"1": {
+							"patterns": [
+								{
+									"name": "constant.numeric.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
 				}
 			]
 		}

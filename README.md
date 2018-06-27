@@ -1,22 +1,22 @@
 # ANSYS CFX Command Language (CCL):
+### Language support for ANSYS CFX state languages, CCL and CEL.
 
-This is a extension meant to help with syntax highlighting and code folding for script languages involving ANSYS CFX workflows. CFX is a Computational Fluid Dynamics (CFD) software package within the Computer Aided Engineering (CAE) package ANSYS. This extensions is specifically designed to be used with .ccl and .cst files which are the pre- and post-processing scripts within the program.
-
+![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/u2berggeist.cfxlanguage.svg
+)
 
 ## Features
 
 - Syntax highlighting
-    - Includes specific highlighting for CCL built-in functions and constants
+    - Includes specific highlighting for CCL and CEL native functions and constants
 - Code folding
+- Supported file extensions: `.ccl` and `.cst`
 
-## Release Notes
+![screenshot](images/ImpellerStateFile_Screencap.PNG)
 
-### 1.0.2
-Minor Spelling, `=` now added as an math operator, now officially on the Extension Marketplace
+## Please report bugs or feature requests on [GitHub](https://www.github.com/u2berggeist/ANSYS_CFX).
 
-### 1.0.1
-CHANGELOG added, minor spelling
+## Want to Contribute? Go [here](https://github.com/u2berggeist/ANSYS_CFX/blob/master/CONTRIBUTE%20INFO.md) to find some helpful resources!
 
-### 1.0.0
-Initial release, basic syntax highlighting
+
+
 

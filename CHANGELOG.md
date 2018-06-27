@@ -1,7 +1,20 @@
 # Change Log
-All notable changes to the "ANSYS CFX Command Lanugauge (CCL)" extension will be documented in this file.
+All notable changes to the "ANSYS CFX Command Language (CCL)" extension will be documented in this file.
 
 Format here based on [Keep a Changelog](http://keepachangelog.com/).
+
+## 1.1.0
+### Added
+- Function highlighting is now fully enabled!
+- Expressions are scoped
+- Section headers and contents are now scoped
+- Program Constants are defined and scoped
+
+### Changed
+- Continued typo fixing
+
+### Removed
+- `=` is no longer a math operator. It is treated separately
 
 ## 1.0.2
 - `=` is now a math operator
