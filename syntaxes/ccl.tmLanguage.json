@@ -63,11 +63,37 @@
 				}
 			]
 		},
+		"functions_all": {
+			"patterns": [
+				{"include": "#functions_operators"},
+				{"include": "#functions_math"},
+				{"include": "#physical_constants"},
+				{"include": "#program_constants"}
+			]
+		},
 		"physical_constants": {
 			"patterns": [
 				{
 					"name": "meta",
 					"match": "\\W(avogadro|boltzmann|clight|e|echarge|spspermo|g|mupermo|pi|plank|stegan)\\W",
+					"captures": {
+						"1": {
+							"patterns": [
+								{
+									"name":"constant.language.ccl",
+									"match": ".*"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"program_constants": {
+			"patterns": [
+				{
+					"name": "meta",
+					"match": "\\W(citern|acplgstep|aitern|atstep|cstagger|ctstep|sstep|dtstep|t)\\W",
 					"captures": {
 						"1": {
 							"patterns": [
@@ -133,6 +159,29 @@
 				}
 			]
 		},
+		"expressions":{
+			"patterns": [
+				{"include": "#functions_all"},
+				{
+					"name":"meta",
+					"match": "\\A [^A-Za-z].*",
+					"captures": {
+						"0": {
+							"patterns": [
+								{"include": "#units"},
+								{"include": "#numbers"}
+							]
+						}
+					}
+				},
+				{"include": "#units"},
+				{
+					"name": "storage.modifier.ccl",
+					"match": "[\\w ]",
+					"comment": "Capture everything except the comma separator "
+				}
+			]
+		},
 		"options": {
 			"patterns": [
 				{
@@ -149,7 +198,7 @@
 						},
 						"2":{
 							"patterns": [
-								{"include": "#functions_operators"},
+								{"include": "#functions_all"},
 								{
 									"name":"meta",
 									"match": "\\A [^A-Za-z].*",
@@ -190,7 +239,7 @@
 					"patterns": [
 						{"include": "#section_headings"},
 						{"include": "#options"},
-						{"include": "#units"}
+						{"include": "#expressions"}
 					]
 				}
 			]
