@@ -1,8 +1,9 @@
 # ANSYS CFX Command Language (CCL):
 ### Language support for ANSYS CFX state languages, CCL and CEL.
 
-![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/u2berggeist.cfxlanguage.svg
-)
+[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/u2berggeist.cfxlanguage.svg
+)](https://marketplace.visualstudio.com/items?itemName=u2berggeist.cfxlanguage)
+[![Say Thanks!](https://img.shields.io/badge/Say-Thanks&#33;-orange.svg?longCache=true&style=flat-square)](https://saythanks.io/to/u2berggeist)
 
 ## Features
 
