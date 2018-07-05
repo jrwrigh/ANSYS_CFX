@@ -3,6 +3,14 @@ All notable changes to the "ANSYS CFX Command Language (CCL)" extension will be 
 
 Format here based on [Keep a Changelog](http://keepachangelog.com/).
 
+## 1.1.1
+### Added
+- Added a saythanks.io button to the README
+
+### Changed
+- README formatting
+- Visual Studio Code badge links to marketplace page
+
 ## 1.1.0
 ### Added
 - Function highlighting is now fully enabled!
