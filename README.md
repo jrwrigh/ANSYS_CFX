@@ -4,7 +4,6 @@
 [![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/version/u2berggeist.cfxlanguage.svg
 )](https://marketplace.visualstudio.com/items?itemName=u2berggeist.cfxlanguage)
 ![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/u2berggeist.cfxlanguage)
-[![Say Thanks!](https://img.shields.io/badge/Say-Thanks&#33;-orange.svg?longCache=true&style=flat-square)](https://saythanks.io/to/u2berggeist)
 
 ## Features
 
